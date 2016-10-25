@@ -1,0 +1,74 @@
+<div>
+    <div class="container">
+        <div class="row panel">
+            <div class="col-xs-12">
+                <div class="col-xs-12 col-md-4 col-sm-6 col-lg-4">
+                    <img class="img-thumbnail picture profile-pic-mobile" ng-src={{coverPicture.cover.source}} />
+                </div>
+                <div class="header profile-detail col-xs-12 col-md-8 col-sm-6 col-lg-8">
+                    <h3 class="profile-text">{{coverPicture.name}}</h3>
+                    <h4 class="profile-text">{{coverPicture.birthday}}</h4>
+                    <h4 class="profile-text">{{coverPicture.email}}</h4>                    
+                    <h4 class="profile-text">{{coverPicture.gender}}</h4>
+                    <div ng-repeat="key in coverPicture.education">
+                       <h4 class="profile-text">{{key.school.name}}</h4> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--        <img class="profile-pic-mobile" ng-src={{coverPicture.source}} /> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!-- <input type="email" class="form-control" placeholder="What are you up to?"> -->
+                        <textarea id="status-box" class="form-control status-box" rows="2" ng-model="post.status" placeholder="What's on your mind?"></textarea>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-link btn-icon"><i class="glyphicon glyphicon-map-marker"></i></button>
+                            <button type="button" class="btn btn-link btn-icon"><i class="glyphicon glyphicon-user"></i></button>
+                            <button type="button" class="btn btn-link btn-icon"><i class="glyphicon glyphicon-camera"></i></button>
+                            <button type="button" class="btn btn-link btn-icon"><i class="glyphicon glyphicon-facetime-video"></i></button>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-success" ng-click="postFbStatus(post.status)">Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div ng-repeat="key in getPostOnWall.posts.data" class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <ul class="event-list">
+                    <li>
+                        <time datetime="2014-07-20 2000">
+                            <span class="day">{{key.changed_time |date : 'd'}}</span>
+                            <span class="month">{{key.changed_time |date : 'MMM'}}</span>
+                            <span class="year">{{key.changed_time |date : 'yyyy'}}</span>
+                            <span class="time">8:00 PM</span>
+                        </time>
+                        <img ng-if="key.picture" ng-src="{{key.picture}}" /> 
+                        <div class="info">
+                            <h2 class="title" ng-if="key.message">{{key.message}}</h2>
+                            <h2 class="title" ng-if="key.story">{{key.story}}</h2>
+                            <!-- <p class="desc">{{key.message}}</p> -->
+                            <ul>
+                                <li style="width:33%;">{{key.likes.data.length}} <span ng-if="key.likes=== undefined">0</span> <span class="glyphicon glyphicon-heart"></span></li>
+                                <li style="width:34%;">{{key.comments.data.length}} <span ng-if="key.comments=== undefined">0</span> <span class="glyphicon glyphicon-comment"></span></li>
+                                <li style="width:33%;">0 <span class="glyphicon glyphicon-share"></span></li>
+                            </ul>
+                        </div>
+                        <div class="social">
+                            <ul>
+                                <li class="facebook" style="width:33%;"><a href="#facebook"><span class="fa fa-facebook"></span></a></li>
+                                <li class="twitter" style="width:34%;"><a href="#twitter"><span class="fa fa-twitter"></span></a></li>
+                                <li class="google-plus" style="width:33%;"><a href="#google-plus"><span class="fa fa-google-plus"></span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

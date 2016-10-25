@@ -1,0 +1,33 @@
+<div class="" style="width: 80%; margin: 20px auto;">
+    <div class='row'>
+        <div ng-repeat="data in pageFeedData" class='col-xs-12 col-sm-6 col-md-6 col-lg-4 feed-card'>
+            <div class="panel panel-default card-mobile">
+                <div class='col-sm-12'>
+                    <img ng-src={{data.picture}} class="img-responsive" style="width: 100%">
+                </div>
+                <div class="panel-body">
+                    <p ng-if="data.story" class="message-cls">{{data.story}}</p>
+                    <p class="message-cls" ng-if="data.message" ng-click="openShareUrl(data.attachments.data[0].target.url)">{{data.message}}
+                        <a ng-if="data.attachments.data[0].type == 'share'" href="{{data.attachments.data[0].target.url}}" target="_blank">link                       
+                    </a>
+                    </p>
+                    <div class="btn-group" style="width: 100%">
+                      <button type="button" class="btn btn-primary" ng-click="showLikes(data.comments)" ng-if="data.comments.data"><i class="glyphicon glyphicon-heart"></i> {{data.likes.data.length}}</button>
+                      <button type="button" class="btn btn-primary pull-right" ng-click="showComments(data.comments)" ng-if="data.comments.data"><i class="glyphicon glyphicon-comment"></i> {{data.comments.data.length}}</button>
+                    </div>
+                    <div class="animate-msg" ng-if="data.comments.visible == true" ng-repeat="comment in data.comments.data">
+                        <strong class="pull-left primary-font ">{{comment.from.name}} : </strong>
+                        <li class="ui-state-default">{{comment.message}}</li>
+                        <small class="pull-right text-muted">
+                           <span class="glyphicon glyphicon-time"></span>{{comment.created_time}}</small>
+                        </hr>
+                        <!-- <h4 class="card-title"><small class="text-muted">{{comment.from.name}}</small></h4>
+                        <p class="card-text"><small class="text-muted">{{comment.message}}</small></p> -->
+                        <!-- <p class="card-text"><small class="text-muted">{{comment.created_time}}</small></p> -->
+                    </div>
+                </div>
+                <div class="panel-bottom"><small class="text-muted">{{data.created_time}}</small></div>
+            </div>
+        </div>
+    </div>
+</div>

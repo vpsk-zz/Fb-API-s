@@ -1,0 +1,52 @@
+<div class="menu">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Add your site or application content here -->
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class=" search-div-md hamburger-menu-profile menu-item">
+                    <div class="profile-icon-container">
+                        <a class="profile-icon-box" ng-click = profilePage()> <img class="profile-icon-mobile img-circle" ng-src={{profileData.picture.data.url}} /> </a>
+                        <address>
+                            <span class="profile-name">{{profileData.name}}</span>
+                            <!-- <br> {{profileData.City}}, {{profileData.Country}} -->
+                        </address>
+                    </div>
+                </li>
+                <li ui-sref="login.profile"><a class="menu-item" ng-click = recomendationsPage()> {{hamburgerRecomendationsTab}} </a></li>
+                <li ui-sref="login.pageFeed"><a class="menu-item"> {{updateSkills}} </a></li>
+                <!--<li><a href="#">{{settingsTab}}</a></li>-->
+                <!-- <li id="footer_sidebar_2" ><a class="menu-item" id="sidebar_footer_text" ng-click="aboutApp('option1')"> {{settingsTab}} </a></li> -->
+                <!-- <li id="footer_sidebar" ><a class="menu-item" id="sidebar_footer_text" ng-click="aboutApp('option2')" href="" > {{hamburgerLegalTab}} </a></li> -->
+            </ul>
+        </div>
+        <div id="page-content-wrapper" ng-click="closeMenu()">
+            <div class="container-fluid">
+                <div class="row navbar-header-row">
+                    <div class="navbar-header col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="header-icon" ng-click="toggleMenu($event)">
+                            <a  class="glyphicon glyphicon-align-justify" id="menu-toggle" ></a>
+                        </div>
+                        <div class="header-icon app-header">{{recommendationHeaderText}}</div>
+                        <div class="header-icon">
+                            <span class="icon-search" id="menu-toggle"></span>
+                        </div>
+                        <div class="header-icon  hidden-xs">
+                            <a href="#" class="icon-bell" id="menu-toggle"></a>
+                        </div>
+                        <div class="header-icon  hidden-xs">
+                            <a href="#" class="icon-menu-squares-condensed" id="menu-toggle"></a>
+                        </div>
+                        <div class="header-icon hidden-xs">
+                            <a ng-click = profilePage() > <img class="profile-icon-web img-circle" ng-src={{profileData.PictureURL}} />
+                        </div>
+                    </div>
+                </div>
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>
+
