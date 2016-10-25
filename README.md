@@ -3,5 +3,5 @@ facebook api demo
 
 * npm install 
 * gulp serve
-* put youe app id in 'index.run.js file'
+* put your app id in 'index.run.js file'
 
